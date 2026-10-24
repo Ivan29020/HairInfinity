@@ -22,6 +22,3 @@ Database model
 The relational model includes entities and relationships for personal records, customers, staff, employment contracts, appointments, services, promotions, reviews, suppliers, products, categories, warehouses, rooms, payment methods, and receipts. Junction tables are used for many-to-many relationships, such as appointments and services.
 Purpose
 The goal is to provide a clear online presence for the salon while organizing its internal workflows and data in one web-based system.
-# HairInfinity
-
-Laravel-based web platform for a hair salon, combining a public showcase website with a management dashboard and a MySQL database design for customers, staff, appointments, services, products, suppliers, reviews, and payments.
