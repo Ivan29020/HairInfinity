@@ -1,0 +1,96 @@
+.top-bar {
+    position: fixed; /* Posiziona la barra in alto e visibile durante lo scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; /* Sfondo completamente trasparente */
+    padding: 8px 0; /* Aggiunge padding iniziale maggiore */
+    z-index: 10; /* Garantisce che la barra sia visibile sopra le altre */
+    display: flex;
+    justify-content: space-between; /* Distribuisce lo spazio tra il logo e la parte destra */
+    align-items: center;
+    transition: all 0.3s ease; /* Transizione per ridimensionamento */
+    }
+.top-bar.scrolled {
+    background-color: /*#cdbea1;*/ #171923; /*Colore blu scuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge ombra */
+    padding: 5px 0; /* Riduce il padding durante lo scroll */
+}
+
+.top-bar-logo {
+    margin-left: 20px; /* Aggiunge margine a sinistra */
+}
+
+.top-bar-logo img {
+    max-height: 100px;
+    width: 250px;
+    height: 100px;
+    transition: all 0.3s ease;
+}
+
+.top-bar.scrolled .top-bar-logo img {
+    max-height: 67px; /* Riduce la dimensione del logo */
+    width: 200px; /* Proporzionalmente ridotto */
+}
+
+.top-bar-right {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.top-bar-nav ul {
+    display: flex;
+    gap: 20px; /* Distanza tra i link */
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Rimuove i pallini */
+}
+
+.top-bar-nav ul li a {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #fff; /* Colore testo bianco */
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease; /* Transizione fluida */
+}
+
+.top-bar-nav ul li a.active {
+    color: #007bff; /* Colore blu per il link attivo */
+}
+
+.top-bar-nav ul li a:hover {
+    color: #007bff; /* Colore grigio scuro */
+}
+
+.top-bar-search {
+    margin-right: 20px; /* Aggiunge margine a destra */
+}
+
+.top-bar-search a {
+    font-size: 18px;
+    color: #fff; /* Colore bianco */
+    transition: color 0.3s ease;
+}
+
+.top-bar-search a:hover {
+    color: rgb(37, 41, 244); /* Colore blu */
+}
+
+.no-scroll-navbar .top-bar {
+    background-color: #171923 !important; /* Sfondo blu scuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiungi ombra */
+    height: 75px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.no-scroll-navbar main {
+    margin-top: 60px; /* Imposta un offset pari all'altezza della navbar */
+    padding-top: 70px;
+    padding-bottom: 40px;
+}

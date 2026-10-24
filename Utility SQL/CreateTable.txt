@@ -1,0 +1,202 @@
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS `anagrafica`;
+CREATE TABLE `anagrafica` (
+  `codice_fiscale` VARCHAR(16) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `cognome` VARCHAR(100) NOT NULL,
+  `data_nascita` DATE NOT NULL,
+  `telefono` VARCHAR(20) DEFAULT NULL,
+  PRIMARY KEY (`codice_fiscale`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `clienti`;
+CREATE TABLE `clienti` (
+  `id_cliente` INT AUTO_INCREMENT NOT NULL,
+  `codice_fiscale_fk` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `password_hash` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id_cliente`),
+  UNIQUE KEY `uk_cliente_codice_fiscale` (`codice_fiscale_fk`),
+  CONSTRAINT `fk_cliente_anagrafica` FOREIGN KEY (`codice_fiscale_fk`) REFERENCES `anagrafica` (`codice_fiscale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `staff`;
+CREATE TABLE `staff` (
+  `id_staff` INT AUTO_INCREMENT NOT NULL,
+  `codice_fiscale_fk` VARCHAR(16) NOT NULL,
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `password_hash` VARCHAR(255) NOT NULL,
+  `ruolo` ENUM("Dipendente","Proprietario")DEFAULT NULL,
+  `specializzazione` VARCHAR(100) DEFAULT NULL,
+  PRIMARY KEY (`id_staff`),
+  UNIQUE KEY `uk_staff_codice_fiscale` (`codice_fiscale_fk`),
+  CONSTRAINT `fk_staff_anagrafica` FOREIGN KEY (`codice_fiscale_fk`) REFERENCES `anagrafica` (`codice_fiscale`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `contratti`;
+CREATE TABLE `contratti` (
+  `id_contratto` INT AUTO_INCREMENT NOT NULL,
+  `id_staff_fk` INT NOT NULL,
+  `tipo_contratto` VARCHAR(100) NOT NULL,
+  `data_inizio` DATE NOT NULL,
+  `data_fine` DATE DEFAULT NULL,
+  `stipendio` DECIMAL(10, 2) DEFAULT NULL,
+  PRIMARY KEY (`id_contratto`),
+  UNIQUE KEY `uk_contratto_staff` (`id_staff_fk`),
+  CONSTRAINT `fk_contratto_staff` FOREIGN KEY (`id_staff_fk`) REFERENCES `staff` (`id_staff`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `sale`;
+CREATE TABLE `sale` (
+  `id_sala` INT AUTO_INCREMENT NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `capienza` INT DEFAULT NULL,
+  PRIMARY KEY (`id_sala`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `promozioni`;
+CREATE TABLE `promozioni` (
+  `id_promozione` INT AUTO_INCREMENT NOT NULL,
+  `nome` VARCHAR(255) NOT NULL,
+  `descrizione` TEXT DEFAULT NULL,
+  `costo` DECIMAL(10, 2) NOT NULL,
+  `data_inizio` DATE NOT NULL,
+  `data_fine` DATE NOT NULL,
+  PRIMARY KEY (`id_promozione`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `servizi`;
+CREATE TABLE `servizi` (
+  `id_servizio` INT AUTO_INCREMENT NOT NULL,
+  `nome` VARCHAR(255) NOT NULL,
+  `descrizione` TEXT DEFAULT NULL,
+  `costo` DECIMAL(10, 2) NOT NULL,
+  PRIMARY KEY (`id_servizio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `metodi_pagamento`;
+CREATE TABLE `metodi_pagamento` (
+  `id_metodo_pagamento` INT AUTO_INCREMENT NOT NULL,
+  `tipo` VARCHAR(50) NOT NULL,
+  `descrizione` TEXT DEFAULT NULL,
+  `commissioni` DECIMAL(5, 2) DEFAULT 0.00,
+  `stato` ENUM('attivo', 'non attivo') DEFAULT 'attivo',
+  PRIMARY KEY (`id_metodo_pagamento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `appuntamenti`;
+CREATE TABLE `appuntamenti` (
+  `id_appuntamento` INT AUTO_INCREMENT NOT NULL,
+  `data_ora` DATETIME NOT NULL,
+  `descrizione` TEXT DEFAULT NULL,
+  `costo_totale` DECIMAL(10, 2) DEFAULT NULL,
+  `id_cliente_fk` INT NOT NULL,
+  `id_staff_inserisce_fk` INT NOT NULL,
+  `id_staff_assegnato_fk` INT NOT NULL,
+  `id_sala_fk` INT NOT NULL,
+  PRIMARY KEY (`id_appuntamento`),
+  CONSTRAINT `fk_appuntamento_cliente` FOREIGN KEY (`id_cliente_fk`) REFERENCES `clienti` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_appuntamento_staff_inserisce` FOREIGN KEY (`id_staff_inserisce_fk`) REFERENCES `staff` (`id_staff`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_appuntamento_staff_assegnato` FOREIGN KEY (`id_staff_assegnato_fk`) REFERENCES `staff` (`id_staff`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_appuntamento_sala` FOREIGN KEY (`id_sala_fk`) REFERENCES `sale` (`id_sala`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `scontrini`;
+CREATE TABLE `scontrini` (
+  `id_scontrino` INT AUTO_INCREMENT NOT NULL,
+  `id_appuntamento_fk` INT NOT NULL,
+  `id_metodo_pagamento_fk` INT NOT NULL,
+  `data_emissione` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `totale` DECIMAL(10, 2) NOT NULL,
+  PRIMARY KEY (`id_scontrino`),
+  UNIQUE KEY `uk_scontrino_appuntamento` (`id_appuntamento_fk`),
+  CONSTRAINT `fk_scontrino_appuntamento` FOREIGN KEY (`id_appuntamento_fk`) REFERENCES `appuntamenti` (`id_appuntamento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_scontrino_metodo_pagamento` FOREIGN KEY (`id_metodo_pagamento_fk`) REFERENCES `metodi_pagamento` (`id_metodo_pagamento`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `appuntamento_servizi`;
+CREATE TABLE `appuntamento_servizi` (
+  `id_appuntamento_fk` INT NOT NULL,
+  `id_servizio_fk` INT NOT NULL,
+  PRIMARY KEY (`id_appuntamento_fk`, `id_servizio_fk`),
+  CONSTRAINT `fk_as_appuntamento` FOREIGN KEY (`id_appuntamento_fk`) REFERENCES `appuntamenti` (`id_appuntamento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_as_servizio` FOREIGN KEY (`id_servizio_fk`) REFERENCES `servizi` (`id_servizio`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `appuntamento_promozioni`;
+CREATE TABLE `appuntamento_promozioni` (
+  `id_appuntamento_fk` INT NOT NULL,
+  `id_promozione_fk` INT NOT NULL,
+  PRIMARY KEY (`id_appuntamento_fk`, `id_promozione_fk`),
+  CONSTRAINT `fk_ap_appuntamento` FOREIGN KEY (`id_appuntamento_fk`) REFERENCES `appuntamenti` (`id_appuntamento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_ap_promozione` FOREIGN KEY (`id_promozione_fk`) REFERENCES `promozioni` (`id_promozione`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `recensioni`;
+CREATE TABLE `recensioni` (
+  `id_recensione` INT AUTO_INCREMENT NOT NULL,
+  `id_appuntamento_fk` INT NOT NULL,
+  `valutazione` TINYINT NOT NULL,
+  `descrizione` TEXT DEFAULT NULL,
+  `data_creazione` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_recensione`),
+  UNIQUE KEY `uk_recensione_appuntamento` (`id_appuntamento_fk`),
+  CONSTRAINT `fk_recensione_appuntamento` FOREIGN KEY (`id_appuntamento_fk`) REFERENCES `appuntamenti` (`id_appuntamento`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `fornitori`;
+CREATE TABLE `fornitori` (
+  `id_fornitore` INT AUTO_INCREMENT NOT NULL,
+  `nome` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) UNIQUE,
+  `telefono` VARCHAR(20),
+  `indirizzo` VARCHAR(255),
+  `valutazione` TINYINT DEFAULT NULL,
+  `stato_contrattuale` ENUM('attivo', 'non attivo') DEFAULT 'attivo',
+  PRIMARY KEY (`id_fornitore`),
+  CONSTRAINT `chk_valutazione` CHECK ((`valutazione` >= 1) AND (`valutazione` <= 5))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE `categorie` (
+  `nome` VARCHAR(100) NOT NULL,
+  `descrizione` TEXT,
+  PRIMARY KEY (`nome`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `prodotti`;
+CREATE TABLE `prodotti` (
+  `id_prodotto` INT AUTO_INCREMENT NOT NULL,
+  `nome` VARCHAR(255) NOT NULL,
+  `descrizione` TEXT,
+  `prezzo` DECIMAL(10, 2) NOT NULL,
+  `nome_categoria_fk` VARCHAR(100) NOT NULL,
+  `id_fornitore_fk` INT NOT NULL,
+  PRIMARY KEY (`id_prodotto`),
+  CONSTRAINT `fk_prodotto_categoria` FOREIGN KEY (`nome_categoria_fk`) REFERENCES `categorie` (`nome`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_prodotto_fornitore` FOREIGN KEY (`id_fornitore_fk`) REFERENCES `fornitori` (`id_fornitore`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `magazzini`;
+CREATE TABLE `magazzini` (
+  `id_magazzino` INT AUTO_INCREMENT NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `indirizzo` VARCHAR(255),
+  `capienza` INT,
+  `descrizione` TEXT,
+  PRIMARY KEY (`id_magazzino`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `magazzino_prodotti`;
+CREATE TABLE `magazzino_prodotti` (
+  `id_magazzino_fk` INT NOT NULL,
+  `id_prodotto_fk` INT NOT NULL,
+  `quantita` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id_magazzino_fk`, `id_prodotto_fk`),
+  CONSTRAINT `fk_mp_magazzino` FOREIGN KEY (`id_magazzino_fk`) REFERENCES `magazzini` (`id_magazzino`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_mp_prodotto` FOREIGN KEY (`id_prodotto_fk`) REFERENCES `prodotti` (`id_prodotto`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+SET FOREIGN_KEY_CHECKS = 1;

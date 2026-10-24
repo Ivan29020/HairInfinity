@@ -1,0 +1,108 @@
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #333;
+    line-height: 1.8;
+}
+
+/* Titoli */
+h2 {
+    font-weight: 700;
+    color: #2d3748;
+}
+
+/* Sezione Company Description */
+.company-description {
+    background-color: #ffffff;
+    padding: 4rem;                     /* Spazio interno ampio */
+    border-radius: 20px;               /* Angoli arrotondati */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombreggiatura leggera */
+    margin-top: 1rem;                 /* Centratura con margine verticale ampio */
+    max-width: 80%;                    /* Larghezza dinamica */
+}
+
+.company-description h2 {
+    font-size: 2.5rem;                 /* Titolo grande */
+    font-weight: 800;                  /* Grassetto marcato */
+    margin-bottom: 2.5rem;             /* Spaziatura sotto il titolo */
+    text-align: center;                /* Testo centrato */
+}
+
+.company-description p {
+    color: #4a5568;                    /* Colore grigio morbido */
+    font-size: 1.125rem;               /* Dimensione del testo */
+    line-height: 1.9;                  /* Spaziatura tra righe */
+    text-align: center;                /* Testo centrato */
+    margin: 0 auto;
+    max-width: 750px;                  /* Larghezza limitata per una buona leggibilità */
+}
+
+/* Sezione Information */
+.information-section {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 16px;               /* Angoli arrotondati */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombreggiatura leggera */
+    margin: 5rem auto;                 /* Margini abbondanti */
+    max-width: 80%;                    /* Larghezza dinamica */
+}
+
+.information-section h2 {
+    font-size: 2rem;                   /* Titolo di dimensione media */
+    font-weight: bold;                 /* Grassetto */
+    margin-bottom: 2rem;               /* Spaziatura sotto il titolo */
+    text-align: center;
+    color: #2d3748;                    /* Grigio scuro */
+}
+
+.information-section div {
+    font-size: 1.125rem;               /* Testo leggibile */
+    line-height: 1.75;                 /* Spaziatura tra righe */
+    color: #4a5568;                    /* Grigio morbido */
+    text-align: center;                /* Testo centrato */
+    margin: 0 auto;
+    max-width: 750px;                  /* Larghezza limitata per una buona leggibilità */
+}
+
+.information-section div p {
+    margin-bottom: 1rem;               /* Spaziatura tra i paragrafi */
+}
+
+.information-section div p span {
+    font-weight: 600;                  /* Evidenziazioni in grassetto */
+    color: #1d4ed8;                    /* Colore blu per chiavi importanti */
+}
+
+/* Sezione per la mappa */
+.map-section {
+    background-color: #ffffff;         /* Sfondo bianco */
+    padding: 3rem;                     /* Margini interni generosi */
+    border-radius: 16px;               /* Angoli arrotondati */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombreggiatura leggera */
+    margin: 5rem auto;                 /* Margini verticali abbondanti */
+    max-width: 80%;                    /* Larghezza massima dinamica */
+}
+
+/* Titolo della sezione mappa */
+.map-section h2 {
+    font-size: 2rem;                   /* Dimensione del titolo */
+    font-weight: bold;                 /* Titolo in grassetto */
+    color: #2d3748;                    /* Grigio scuro */
+    text-align: center;
+    margin-bottom: 2rem;               /* Spaziatura sotto il titolo */
+}
+
+/* Contenitore iframe per la mappa */
+.iframe-container {
+    overflow: hidden;                  /* Nasconde eventuali bordi extra */
+    position: relative;
+    border-radius: 12px;               /* Angoli arrotondati */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombra sottile */
+}
+
+.iframe-container iframe {
+    border: 0;                         /* Nessun bordo */
+    width: 100%;                       /* Larghezza dinamica */
+    height: 450px;                     /* Altezza preimpostata */
+}

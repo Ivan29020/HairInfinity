@@ -1,0 +1,890 @@
+/* RESET DI BASE */
+* {
+    margin: 0; /* Rimuove i margini predefiniti */
+    padding: 0; /* Rimuove il padding predefinito */
+    box-sizing: border-box;  /* Include padding e bordi nelle dimensioni degli elementi */
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* STILE DEL CORPO DELLA PAGINA */
+body {
+    background: linear-gradient(135deg, #3a7bd5, #002aff); /* Sfondo con gradiente */
+    padding: 2rem; /* Padding intorno al corpo */
+    display: flex; /* Usa Flexbox per il layout */
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altezza pari alla viewport */
+    overflow: auto; /* Nasconde lo scroll */
+}
+/* ------------------------------------------------------------------------- ------------------------ */
+
+/* CONTENITORE PRINCIPALE DEL DASHBOARD */
+.dashboard {
+    position: relative; /* Aggiunto per posizionare la sidebar all'interno */
+    display: flex;
+    width: 90%; /* Larghezza del 90% del contenitore padre */
+    max-width: 1800px; /* Larghezza massima */
+    height: 90vh; /* Altezza del 90% della viewport */
+    max-height: 800px; /* Altezza massima */
+    background: linear-gradient(135deg, #E8E8E8, #F5F5F5); /* Sfondo con gradiente */
+    border-radius: 15px; /* Bordi arrotondati */
+    overflow: hidden; /* Nasconde il contenuto che supera i bordi */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombra */
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* Colonna 1 */
+/* Sidebar ------------------------------------------------------------------------------------------ */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #E8E8E8, #F5F5F5);
+    color: white;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -250px;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 1; /* Mantiene la sidebar sopra il contenuto */
+}
+
+/* Intestazione della sidebar ----------------------------------------------------------------------- */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #E8E8E8, #F5F5F5);
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    color: #202A67;
+    font-weight: bold; /* Testo in grassetto *!*/
+}
+
+/* Pulsante chiusura sidebar */
+.close-btn {
+    color: #202A67;
+    font-size: 40px;
+    cursor: pointer;
+    border-radius: 50%; /* Forma circolare */
+    width: 40px; /* Larghezza pari all'altezza per formare un cerchio */
+    height: 40px;
+    display: flex; /* Allinea icona al centro */
+    justify-content: center;
+    align-items: center;
+    border: none;
+    transition: all 0.3s ease-in-out; /* Transizione per interazioni fluide */
+}
+
+/* Effetto Hover */
+.close-btn:hover {
+    background-color: #e0e0e0; /* Cambia il colore dello sfondo al passaggio del mouse */
+    border-color: #c0c0c0; /* Bordo leggermente più scuro */
+    transform: scale(1.1); /* Leggero ingrandimento */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Ombra più marcata */
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* Link della sidebar ------------------------------------------------------------------------------- */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    padding: 10px 15px;
+}
+
+.sidebar-menu li a {
+    align-items: center; /* Centra verticalmente le icone e il testo */
+    color: #9b9aa8; /* Colore del testo */
+    padding: 5px; /* Padding interno */
+    border-radius: 10px; /* Bordi arrotondati */
+    transition: all 0.3s ease; /* Transizione fluida */
+    text-decoration: none;
+    display: flex;
+    height: 40px;
+}
+
+.sidebar-menu li a svg {
+    height: 1.5rem; /* Dimensione uniforme per le icone */
+    width: 1.5rem;  /* Dimensione uniforme per le icone */
+    margin: 0 15px 0 10px; /* Margine a destra delle icone */
+}
+
+.sidebar-menu li a span {
+    font-size: 1.2rem; /* Dimensione del testo */
+}
+
+.sidebar-menu li a:hover {
+    color: #202A67; /* Cambia colore al passaggio del mouse */
+    font-weight: bold; /* Testo in grassetto */
+    transform: scale(1.05); /* Effetto di ingrandimento */
+    background-color: rgba(32, 42, 103, 0.1); /* Sfondo al passaggio del mouse */
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* Main Content ------------------------------------------------------------------------------------- */
+.main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    position: relative;
+    z-index: 0; /* Contenuto dietro la sidebar quando aperta */
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* TopBar ------------------------------------------------------------------------------------------- */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.titlePage {
+    font-size: 1.75rem; /* Dimensione del font */
+    font-weight: bold; /* Testo in grassetto */
+    color: #202A67; /* Colore del testo */
+    display: flex; /* Usa Flexbox per il layout */
+    letter-spacing: 1px; /* Spaziatura tra le lettere */
+    font-family: 'Arial', sans-serif; /* Font family */
+    margin-left: 30px;
+}
+
+.menu-btn {
+    background-color: white; /* Colore di sfondo primario */
+    color: black; /* Colore del testo */
+    border: none; /* Nessun bordo */
+    padding: 12px 25px; /* Aumenta leggermente il padding */
+    cursor: pointer; /* Cambia il cursore */
+    font-size: 16px; /* Dimensione del testo */
+    font-family: 'Arial', sans-serif; /* Cambia il font */
+    font-weight: bold; /* Testo in grassetto */
+    border-radius: 25px; /* Bordi arrotondati */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Effetto ombra */
+    transition: all 0.3s ease; /* Transizione fluida */
+}
+
+.menu-btn:hover {
+    background-color: white; /* Cambia colore al passaggio del mouse */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombra più intensa */
+    transform: translateY(-2px); /* Leggera elevazione */
+}
+
+.menu-btn:active {
+    background-color: white; /* Colore più scuro alla pressione */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Riduzione dell'ombra */
+    transform: translateY(1px); /* Effetto pressione */
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* Bottone Logout ----------------------------------------------------------------------------------- */
+.wrapper {
+    display: flex; /* Usa Flexbox per il layout */
+    justify-content: center; /* Centra orizzontalmente */
+}
+
+.wrapper .icon {
+    position: relative; /* Posizione relativa */
+    background: #fff; /* Sfondo bianco */
+    border-radius: 50%; /* Forma circolare */
+    margin: 10px; /* Margine esterno */
+    width: 35px; /* Larghezza */
+    height: 35px; /* Altezza */
+    display: flex; /* Usa Flexbox per il layout */
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* Ombra */
+    transition: all 0.2s ease; /* Transizione fluida */
+}
+
+.wrapper .tooltip {
+    position: absolute; /* Posizione assoluta */
+    top: -35px; /* Posizione sopra l'icona */
+    font-size: 14px; /* Dimensione del testo */
+    background: #202A67; /* Sfondo */
+    color: #fff; /* Colore del testo */
+    padding: 5px 8px; /* Padding interno */
+    border-radius: 5px; /* Bordi arrotondati */
+    opacity: 0; /* Inizialmente invisibile */
+    pointer-events: none; /* Ignora gli eventi del mouse */
+    transition: opacity 0.3s ease; /* Transizione fluida */
+}
+
+.wrapper .icon:hover .tooltip {
+    opacity: 1; /* Mostra il tooltip al passaggio del mouse */
+}
+
+.wrapper .Logout:hover {
+    background: #202A67; /* Cambia sfondo al passaggio del mouse */
+    color: #fff; /* Cambia colore del testo */
+}
+/* -------------------------------------------------------------------------------------------------- */
+
+/* Contenitore principale per ancorare i bottoni ---------------------------------------------------- */
+.Bottoni {
+    display: flex;
+    justify-content: center; /* Allinea i bottoni a sinistra */
+    align-items: center;
+    gap: 35px; /* Spaziatura tra i bottoni */
+    margin-top: 15px;
+    flex-wrap: nowrap; /* Evita che i bottoni vadano a capo */
+    padding: 5px; /* Padding per separare i bottoni dalla topbar e dalla tabella */
+    background-color: transparent; /* Sfondo trasparente */
+}
+
+/* Stile dei bottoni */
+.Singolo_Bottone {
+    width: 240px; /* Larghezza fissa per ogni bottone */
+    height: 80px; /* Altezza fissa */
+    flex-direction: column; /* Disposizione verticale degli elementi interni */
+    display: flex; /* Disposizione flessibile del contenuto interno */
+    align-items: flex-start; /* Allineamento verticale al centro */
+    justify-content: center; /* Allineamento orizzontale al centro */
+    padding: 10px; /* Spaziatura interna */
+    border-radius: 8px; /* Bordi arrotondati */
+    background-size: cover; /* Copre l'intera area del bottone */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Ombra leggera */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Effetti su hover */
+    cursor: pointer; /* Cambia il cursore su hover */
+
+}
+
+.Singolo_Bottone:hover {
+    transform: translateY(-2px); /* Leggero sollevamento */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25); /* Aumenta l'ombra */
+}
+
+.Singolo_Bottone_titolo {
+    font-size: 1.5rem; /* Dimensione più grande per il titolo */
+    font-weight: bold; /* Mantieni il testo in grassetto */
+    text-align: center; /* Allinea il titolo al centro */
+    color: white; /* Colore del titolo */
+}
+
+.Singolo_Bottone_numero {
+    font-size: 1.25rem; /* Dimensione del testo del numero */
+    text-align: center; /* Allinea il numero al centro */
+    color: white; /* Colore leggermente diverso per differenziare */
+    margin-left: 10px;
+}
+
+.Singolo_Bottone_URL {
+    text-decoration: none; /* Rimuovi la sottolineatura dai link */
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+/* TABELLA ------------------------------------------------------------------------------------------- */
+.tabella_container {
+    max-height: 530px; /* Limita l'altezza massima del contenitore */
+    overflow-y: auto; /* Abilita lo scrolling verticale */
+    margin: 10px 30px;
+    padding: 20px;
+    background-color: #ffffff; /* Sfondo bianco per contrasto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+    border-radius: 10px; /* Bordi arrotondati */
+    max-width: 95%;
+    overflow-x: auto; /* Scroll orizzontale se necessario */
+    border: 1px solid #ddd; /* Bordo esterno della tabella */
+}
+
+/* Riga iniziale ------------------------------------------------------------------------------------- */
+.barra_cerca {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+}
+
+.cerca_data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.cerca {
+    width: 90%;
+}
+
+/* Modello di ricerca */
+.search_form {
+    display: flex;
+    justify-content: space-between; /* Spaziatura uniforme */
+    margin-bottom: 15px;
+}
+
+.search_form input {
+    flex-grow: 1; /* Occupa tutto lo spazio disponibile */
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.search_form input:focus {
+    outline: none;
+    border-color: #3a7bd5; /* Cambia bordo sul focus */
+}
+
+.search_form button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #3a7bd5;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.search_form button:hover {
+    background-color: #002aff;
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+
+/* Stile della tabella ------------------------------------------------------------------------------- */
+.element_table {
+    width: 100%;
+    border-collapse: collapse; /* Unisce i bordi */
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Header della tabella */
+.element_table thead {
+    background-color: #3a7bd5; /* Colore di sfondo dell'header */
+    color: #ffffff; /* Colore del testo */
+}
+
+/* Corpo della tabella */
+.element_table tbody tr {
+    background-color: #f9f9f9; /* Colore di base per righe */
+    transition: background-color 0.3s ease; /* Per l'effetto hover */
+}
+
+.element_table tbody tr:nth-child(even) {
+    background-color: #eaeaea; /* Colore alternato per righe pari */
+}
+
+.element_table tbody tr:hover {
+    background-color: #dde7f6; /* Colore all'hover */
+    cursor: pointer; /* Cambia il cursore su hover */
+}
+
+.element_table thead th {
+    padding: 14px 12px;
+    font-weight: bold; /* Testo in grassetto */
+    text-transform: uppercase; /* Testo maiuscolo */
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #002aff; /* Bordi separatori */
+}
+
+/* Celle generiche */
+.element_table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd; /* Separatore orizzontale */
+    vertical-align: middle; /* Centrare il contenuto verticalmente */
+}
+
+/* Contenitore per i bottoni di azione */
+.action-buttons {
+    display: flex;
+    gap: 10px; /* Spaziatura tra i bottoni */
+}
+
+/* Stile per il bottone Aggiungi */
+.btn_aggiungi {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Colore di sfondo */
+    color: #fff; /* Colore del testo */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+    margin-bottom: 15px; /* Margine inferiore per separarlo dalla tabella */
+}
+
+.btn_aggiungi:hover {
+    background-color: #002aff; /* Cambia colore al passaggio del mouse */
+}
+
+/* Stile per il bottone Modifica */
+.btn_modifica {
+    padding: 8px 16px;
+    background-color: #4CAF50; /* Colore di sfondo */
+    color: #fff; /* Colore del testo */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease-in-out;
+    text-decoration: none; /* Rimuove la sottolineatura del link */
+}
+
+.btn_modifica:hover {
+    background-color: #45a049; /* Cambia colore al passaggio del mouse */
+}
+
+/* Stile per il bottone Elimina */
+.btn_elimina {
+    padding: 8px 16px;
+    background-color: #f44336; /* Colore di sfondo */
+    color: #fff; /* Colore del testo */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn_elimina:hover {
+    background-color: #d32f2f; /* Cambia colore al passaggio del mouse */
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* codice edit e create ---------------------------------------------------------------------------- */
+/* CONTENITORE PRINCIPALE */
+.container_create, .modifica_container {
+    max-height: 530px; /* Limita l'altezza massima del contenitore */
+    overflow-y: auto; /* Abilita lo scrolling verticale */
+    margin: 10px 30px;
+    padding: 20px;
+    background-color: #ffffff; /* Sfondo bianco per contrasto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+    border-radius: 10px; /* Bordi arrotondati */
+    max-width: 95%;
+    overflow-x: auto; /* Scroll orizzontale se necessario */
+    border: 1px solid #ddd; /* Bordo esterno della tabella */
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+/* Tasto indietro ---------------------------------------------------------------------------------- */
+.back-button-container {
+    margin: 5px 0 20px 5px;
+}
+
+/*!* Stile del pulsante "btn-secondary" *!*/
+.btn-secondary {
+    display: flex; /* Converte il contenuto del pulsante in un contenitore flex */
+    align-items: center; /* Allinea verticalmente al centro */
+    justify-content: center; /* Allinea orizzontalmente al centro */
+    width: 50px; /* Puoi adattare la larghezza per pulsanti quadrati */
+    height: 50px; /* Puoi adattare l'altezza per pulsanti quadrati */
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+/* Alert di errore ----------------------------------------------------------------------------------- */
+.alert.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 20px;
+}
+
+.alert.alert-danger ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.alert.alert-danger ul li {
+    margin: 5px 0;
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+/* Modulo -------------------------------------------------------------------------------------------- */
+/* STILE DEL FORM */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* STILE DEI GRUPPI DI INPUT */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #202A67;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #3a7bd5;
+    outline: none;
+}
+
+/* STILE DEL TEXTAREA */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+    overflow: auto;
+}
+
+/* STILE DEI CAMPI DI INPUT PER I TELEFONI */
+.phone-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.phone-input input {
+    flex: 1; /* Occupa tutto lo spazio disponibile */
+}
+
+.phone-input .remove-phone {
+    padding: 8px 12px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.phone-input .remove-phone:hover {
+    background-color: #cc0000;
+}
+
+.phone-input .btn_phone_add {
+    margin-left: 10px;
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.phone-input .btn_phone_add:hover {
+    background-color: #45a049;
+}
+
+/* STILE DEI PULSANTI */
+.btn_aggiorna, .btn_phone, .btn-secondary {
+    padding: 12px; /* Spaziatura interna */
+    background-color: #3a7bd5; /* Colore di sfondo */
+    color: #ffffff; /* Colore del testo e dell'icona */
+    border: none; /* Rimuove i bordi */
+    border-radius: 6px; /* Bordi leggermente arrotondati */
+    font-size: 1rem; /* Dimensione del font */
+    font-weight: bold; /* Testo in grassetto */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    transition: all 0.3s ease-in-out; /* Animazione fluida */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    text-transform: uppercase; /* Testo in maiuscolo */
+    text-decoration: none; /* Rimuove eventuali sottolineature */
+}
+
+.btn_aggiorna:hover,
+.btn_phone:hover,
+.btn-secondary:hover {
+    background-color: #002aff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn_aggiorna:focus,
+.btn_phone:focus,
+.btn-secondary:focus {
+    outline: 2px solid #3a7bd5;
+    outline-offset: 1px;
+}
+
+.btn_aggiorna:active,
+.btn_phone:active,
+.btn-secondary:active {
+    background-color: #001a80;
+    transform: translateY(0);
+}
+
+.phone-input .btn_phone_add {
+    margin-left: 10px;
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.phone-input .btn_phone_add:hover {
+    background-color: #45a049;
+}
+
+.btn_cerca_tutto {
+    padding: 10px 15px;
+    background-color: #3a7bd5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* --------------------------------------------------------------------------------------------------- */
+
+/* Responsive ---------------------------------------------------------------------------------------- */
+/* Responsive ---------------------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .dashboard {
+        width: 95%; /* Aumenta la larghezza per schermi più piccoli */
+        max-width: 100%; /* Rimuove il limite massimo di larghezza */
+    }
+
+    .sidebar {
+        width: 200px; /* Riduce la larghezza della sidebar */
+        left: -200px; /* Aggiorna la posizione iniziale */
+    }
+
+    .main-content {
+        padding: 15px; /* Riduce il padding per risparmiare spazio */
+    }
+
+    .Singolo_Bottone {
+        width: 200px; /* Riduce la larghezza dei bottoni */
+        height: 70px; /* Riduce l'altezza dei bottoni */
+    }
+
+    .Singolo_Bottone_titolo {
+        font-size: 1.3rem; /* Riduce la dimensione del titolo */
+    }
+
+    .Singolo_Bottone_numero {
+        font-size: 1.1rem; /* Riduce la dimensione del numero */
+    }
+
+    .tabella_container {
+        margin: 10px 20px; /* Riduce il margine laterale */
+        padding: 15px; /* Riduce il padding */
+    }
+
+    .element_table th,
+    .element_table td {
+        padding: 10px 12px; /* Riduce il padding delle celle */
+    }
+
+    .btn_aggiungi,
+    .btn_modifica,
+    .btn_elimina {
+        padding: 8px 12px; /* Riduce il padding dei bottoni */
+        font-size: 0.9rem; /* Riduce la dimensione del testo */
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard {
+        height: 95vh; /* Aumenta l'altezza per schermi più piccoli */
+    }
+
+    .sidebar {
+        width: 180px; /* Riduce ulteriormente la larghezza della sidebar */
+        left: -180px; /* Aggiorna la posizione iniziale */
+    }
+
+    .main-content {
+        padding: 10px; /* Riduce ulteriormente il padding */
+    }
+
+    .Singolo_Bottone {
+        width: 180px; /* Riduce ulteriormente la larghezza dei bottoni */
+        height: 60px; /* Riduce ulteriormente l'altezza dei bottoni */
+    }
+
+    .Singolo_Bottone_titolo {
+        font-size: 1.2rem; /* Riduce ulteriormente la dimensione del titolo */
+    }
+
+    .Singolo_Bottone_numero {
+        font-size: 1rem; /* Riduce ulteriormente la dimensione del numero */
+    }
+
+    .tabella_container {
+        margin: 10px 15px; /* Riduce ulteriormente il margine laterale */
+        padding: 10px; /* Riduce ulteriormente il padding */
+    }
+
+    .element_table th,
+    .element_table td {
+        padding: 8px 10px; /* Riduce ulteriormente il padding delle celle */
+    }
+
+    .btn_aggiungi,
+    .btn_modifica,
+    .btn_elimina {
+        padding: 6px 10px; /* Riduce ulteriormente il padding dei bottoni */
+        font-size: 0.8rem; /* Riduce ulteriormente la dimensione del testo */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem; /* Riduce il padding del corpo */
+    }
+
+    .dashboard {
+        width: 100%; /* Occupa tutta la larghezza disponibile */
+        height: 100vh; /* Occupa tutta l'altezza della viewport */
+        max-height: none; /* Rimuove il limite massimo di altezza */
+    }
+
+    .sidebar {
+        width: 160px; /* Riduce ulteriormente la larghezza della sidebar */
+        left: -160px; /* Aggiorna la posizione iniziale */
+    }
+
+    .main-content {
+        padding: 5px; /* Riduce ulteriormente il padding */
+    }
+
+    .Singolo_Bottone {
+        width: 150px; /* Riduce ulteriormente la larghezza dei bottoni */
+        height: 50px; /* Riduce ulteriormente l'altezza dei bottoni */
+    }
+
+    .Singolo_Bottone_titolo {
+        font-size: 1rem; /* Riduce ulteriormente la dimensione del titolo */
+    }
+
+    .Singolo_Bottone_numero {
+        font-size: 0.9rem; /* Riduce ulteriormente la dimensione del numero */
+    }
+
+    .tabella_container {
+        margin: 10px 10px; /* Riduce ulteriormente il margine laterale */
+        padding: 5px; /* Riduce ulteriormente il padding */
+    }
+
+    .element_table th,
+    .element_table td {
+        padding: 6px 8px; /* Riduce ulteriormente il padding delle celle */
+    }
+
+    .btn_aggiungi,
+    .btn_modifica,
+    .btn_elimina {
+        padding: 5px 8px; /* Riduce ulteriormente il padding dei bottoni */
+        font-size: 0.75rem; /* Riduce ulteriormente la dimensione del testo */
+    }
+
+    .menu-btn {
+        padding: 10px 20px; /* Riduce il padding del pulsante del menu */
+        font-size: 14px; /* Riduce la dimensione del testo */
+    }
+
+    .titlePage {
+        font-size: 1.5rem; /* Riduce la dimensione del titolo della pagina */
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 0.5rem; /* Riduce ulteriormente il padding del corpo */
+    }
+
+    .dashboard {
+        width: 100%; /* Occupa tutta la larghezza disponibile */
+        height: 100vh; /* Occupa tutta l'altezza della viewport */
+    }
+
+    .sidebar {
+        width: 140px; /* Riduce ulteriormente la larghezza della sidebar */
+        left: -140px; /* Aggiorna la posizione iniziale */
+    }
+
+    .main-content {
+        padding: 5px; /* Riduce ulteriormente il padding */
+    }
+
+    .Singolo_Bottone {
+        width: 120px; /* Riduce ulteriormente la larghezza dei bottoni */
+        height: 40px; /* Riduce ulteriormente l'altezza dei bottoni */
+    }
+
+    .Singolo_Bottone_titolo {
+        font-size: 0.9rem; /* Riduce ulteriormente la dimensione del titolo */
+    }
+
+    .Singolo_Bottone_numero {
+        font-size: 0.8rem; /* Riduce ulteriormente la dimensione del numero */
+    }
+
+    .tabella_container {
+        margin: 10px 5px; /* Riduce ulteriormente il margine laterale */
+        padding: 5px; /* Riduce ulteriormente il padding */
+    }
+
+    .element_table th,
+    .element_table td {
+        padding: 5px 6px; /* Riduce ulteriormente il padding delle celle */
+    }
+
+    .btn_aggiungi,
+    .btn_modifica,
+    .btn_elimina {
+        padding: 4px 6px; /* Riduce ulteriormente il padding dei bottoni */
+        font-size: 0.7rem; /* Riduce ulteriormente la dimensione del testo */
+    }
+
+    .menu-btn {
+        padding: 8px 16px; /* Riduce ulteriormente il padding del pulsante del menu */
+        font-size: 12px; /* Riduce ulteriormente la dimensione del testo */
+    }
+
+    .titlePage {
+        font-size: 1.25rem; /* Riduce ulteriormente la dimensione del titolo della pagina */
+    }
+
+    .Bottoni {
+        gap: 20px; /* Riduce la spaziatura tra i bottoni */
+    }
+}

@@ -1,0 +1,180 @@
+/*!* CONTENITORE PRINCIPALE *!*/
+/*.modifica_container {*/
+/*    max-height: 530px;*/
+/*    overflow-y: auto;*/
+/*    margin: 10px 30px;*/
+/*    padding: 20px;*/
+/*    background-color: #ffffff;*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+/*    border-radius: 10px;*/
+/*    max-width: 95%;*/
+/*    overflow-x: auto;*/
+/*    border: 1px solid #ddd;*/
+/*}*/
+
+/*!* STILE DELLA TABELLA *!*/
+/*.element_table {*/
+/*    width: 100%;*/
+/*    min-width: 800px;*/
+/*    border-collapse: collapse;*/
+/*    font-size: 1rem;*/
+/*    text-align: left;*/
+/*}*/
+
+/*!* STILE DEL FORM *!*/
+/*form {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 15px;*/
+/*}*/
+
+/*.form-group {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 5px;*/
+/*    align-items: flex-start;*/
+/*}*/
+
+/*.form-group label {*/
+/*    font-weight: bold;*/
+/*    color: #202A67;*/
+/*}*/
+
+/*.form-group input,*/
+/*.form-group select,*/
+/*.form-group textarea {*/
+/*    padding: 10px;*/
+/*    border: 1px solid #ddd;*/
+/*    border-radius: 5px;*/
+/*    font-size: 1rem;*/
+/*    width: 100%;*/
+/*    box-sizing: border-box;*/
+/*    transition: border-color 0.3s ease;*/
+/*}*/
+
+/*.form-group input:focus,*/
+/*.form-group select:focus,*/
+/*.form-group textarea:focus {*/
+/*    border-color: #3a7bd5;*/
+/*    outline: none;*/
+/*}*/
+
+/*!* STILE DEL TEXTAREA *!*/
+/*textarea {*/
+/*    resize: vertical;*/
+/*    min-height: 100px;*/
+/*    max-height: 200px;*/
+/*    min-width: 100%;*/
+/*    max-width: 100%;*/
+/*    overflow: auto;*/
+/*}*/
+
+/*!* STILE DEI PULSANTI *!*/
+/*.btn_aggiorna, .btn_phone, .btn-secondary {*/
+/*    padding: 12px 20px;*/
+/*    background-color: #3a7bd5;*/
+/*    color: #ffffff;*/
+/*    border: none;*/
+/*    border-radius: 6px;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*    cursor: pointer;*/
+/*    transition: all 0.3s ease-in-out;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+/*.btn_aggiorna:hover,*/
+/*.btn_phone:hover,*/
+/*.btn-secondary:hover {*/
+/*    background-color: #002aff;*/
+/*    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);*/
+/*    transform: translateY(-2px);*/
+/*}*/
+
+/*.btn_aggiorna:focus,*/
+/*.btn_phone:focus,*/
+/*.btn-secondary:focus {*/
+/*    outline: 2px solid #3a7bd5;*/
+/*    outline-offset: 1px;*/
+/*}*/
+
+/*.btn_aggiorna:active,*/
+/*.btn_phone:active,*/
+/*.btn-secondary:active {*/
+/*    background-color: #001a80;*/
+/*    transform: translateY(0);*/
+/*}*/
+
+/*.phone-input .btn_phone_add {*/
+/*    margin-left: 10px;*/
+/*    padding: 8px 12px;*/
+/*    background-color: #4caf50;*/
+/*    color: #fff;*/
+/*}*/
+
+/*.phone-input .btn_phone_add:hover {*/
+/*    background-color: #45a049;*/
+/*}*/
+
+/*!* STILE DEGLI ALERT DI ERRORE *!*/
+/*.alert.alert-danger {*/
+/*    background-color: #f8d7da;*/
+/*    color: #721c24;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid #f5c6cb;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.alert.alert-danger ul {*/
+/*    list-style-type: none;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.alert.alert-danger ul li {*/
+/*    margin: 5px 0;*/
+/*}*/
+
+
+
+/*@media (max-width: 768px) {*/
+/*    .btn_aggiorna, .btn_phone, .btn-secondary {*/
+/*        width: 100%;*/
+/*        text-align: center;*/
+/*    }*/
+
+/*    form {*/
+/*        gap: 10px;*/
+/*    }*/
+
+/*    .form-group input,*/
+/*    .form-group select,*/
+/*    .form-group textarea {*/
+/*        font-size: 0.9rem;*/
+/*    }*/
+
+/*    .back-button-container {*/
+/*        margin-bottom: 30px; !* Maggior spazio sotto il pulsante *!*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 480px) {*/
+/*    .modifica_container {*/
+/*        padding: 10px;*/
+/*    }*/
+
+/*    .element_table {*/
+/*        font-size: 0.8rem;*/
+/*    }*/
+
+/*    .btn_aggiorna, .btn_phone, .btn-secondary {*/
+/*        padding: 100px;*/
+/*        font-size: 0.9rem;*/
+/*    }*/
+
+/*    .back-button-container {*/
+/*        margin-bottom: 40px; !* Ancora più spazio sotto il pulsante *!*/
+/*    }*/
+/*}*/

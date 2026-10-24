@@ -1,0 +1,16 @@
+.card {
+    max-width: 20rem; /* Riduce la larghezza delle card */
+}
+
+.card img {
+    height: auto;
+    max-height: 250px; /* Regola l'altezza delle immagini */
+}
+
+.card-body {
+    font-size: 0.9rem; /* Riduce il testo */
+}
+
+.no-scroll-navbar main {
+    padding-top: 50px !important;
+}

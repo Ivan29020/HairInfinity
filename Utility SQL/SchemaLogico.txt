@@ -1,0 +1,35 @@
+Anagrafica(codice_fiscale:VARCHAR(16) {PK}, nome:VARCHAR(100), cognome:VARCHAR(100), data_nascita:DATE, telefono:VARCHAR(20))
+
+Clienti(id_cliente:INT {PK, AutoInc}, codice_fiscale_fk:VARCHAR(16) {FK, Unique}, email:VARCHAR(255) {Unique}, password_hash:VARCHAR(255))
+
+Staff(id_staff:INT {PK, AutoInc}, codice_fiscale_fk:VARCHAR(16) {FK, Unique}, email:VARCHAR(255) {Unique}, password_hash:VARCHAR(255), ruolo:ENUM('Proprietario', 'Dipendente'), specializzazione:VARCHAR(100))
+
+Contratti(id_contratto:INT {PK, AutoInc}, id_staff_fk:INT {FK, Unique}, tipo_contratto:VARCHAR(100), data_inizio:DATE, data_fine:DATE, stipendio:DECIMAL(10,2))
+
+Sale(id_sala:INT {PK, AutoInc}, nome:VARCHAR(100), capienza:INT)
+
+Servizi(id_servizio:INT {PK, AutoInc}, nome:VARCHAR(255), descrizione:TEXT, costo:DECIMAL(10,2))
+
+Promozioni(id_promozione:INT {PK, AutoInc}, nome:VARCHAR(255), descrizione:TEXT, costo:DECIMAL(10,2), data_inizio:DATE, data_fine:DATE)
+
+Appuntamenti(id_appuntamento:INT {PK, AutoInc}, data_ora:DATETIME, descrizione:TEXT, costo_totale:DECIMAL(10,2), id_cliente_fk:INT {FK}, id_staff_inserisce_fk:INT {FK}, id_staff_assegnato_fk:INT {FK}, id_sala_fk:INT {FK})
+
+Recensioni(id_recensione:INT {PK, AutoInc}, id_appuntamento_fk:INT {FK, Unique}, valutazione:TINYINT, descrizione:TEXT, data_creazione:TIMESTAMP)
+
+Metodi_Pagamento(id_metodo_pagamento:INT {PK, AutoInc}, tipo:VARCHAR(50), descrizione:TEXT, commissioni:DECIMAL(5,2), stato:ENUM('attivo','non attivo'))
+
+Scontrini(id_scontrino:INT {PK, AutoInc}, id_appuntamento_fk:INT {FK, Unique}, id_metodo_pagamento_fk:INT {FK}, data_emissione:DATETIME, totale:DECIMAL(10,2))
+
+Fornitori(id_fornitore:INT {PK, AutoInc}, nome:VARCHAR(255), email:VARCHAR(255) {Unique}, telefono:VARCHAR(20), indirizzo:VARCHAR(255), valutazione:TINYINT {Dominio: 1-5}, stato_contrattuale:ENUM('attivo','non attivo'))
+
+Categorie(nome:VARCHAR(100) {PK}, descrizione:TEXT)
+
+Prodotti(id_prodotto:INT {PK, AutoInc}, nome:VARCHAR(255), descrizione:TEXT, prezzo:DECIMAL(10,2), nome_categoria_fk:VARCHAR(100) {FK}, id_fornitore_fk:INT {FK})
+
+Magazzini(id_magazzino:INT {PK, AutoInc}, nome:VARCHAR(100), indirizzo:VARCHAR(255), capienza:INT, descrizione:TEXT)
+
+Appuntamento_Servizi(id_appuntamento_fk:INT {PK, FK}, id_servizio_fk:INT {PK, FK})
+
+Appuntamento_Promozioni(id_appuntamento_fk:INT {PK, FK}, id_promozione_fk:INT {PK, FK})
+
+Magazzino_Prodotti(id_magazzino_fk:INT {PK, FK}, id_prodotto_fk:INT {PK, FK}, quantita:INT)

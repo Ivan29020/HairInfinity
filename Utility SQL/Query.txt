@@ -1,0 +1,105 @@
+Query fatturato per ogni mese e anno
+
+SELECT
+    DATE_FORMAT(data_emissione, '%Y-%m') AS mese,
+    SUM(totale) AS fatturato_mensile,
+    COUNT(id_scontrino) AS numero_scontrini
+FROM
+    scontrini
+GROUP BY
+    mese
+ORDER BY
+    mese DESC;
+
+
+Query Migliori Dipendenti per Fatturato
+
+
+SELECT
+    a.nome,
+    a.cognome,
+    s.ruolo,
+    COUNT(app.id_appuntamento) AS numero_appuntamenti,
+    SUM(sc.totale) AS fatturato_generato
+FROM
+    staff AS s
+JOIN
+    anagrafica AS a ON s.codice_fiscale_fk = a.codice_fiscale
+JOIN
+    appuntamenti AS app ON s.id_staff = app.id_staff_assegnato_fk
+JOIN
+    scontrini AS sc ON app.id_appuntamento = sc.id_appuntamento_fk
+GROUP BY
+    s.id_staff, a.nome, a.cognome, s.ruolo
+ORDER BY
+    fatturato_generato DESC;
+
+
+Query Migliori Dipendenti per Recensione
+
+SELECT
+    a.nome,
+    a.cognome,
+    s.ruolo,
+    AVG(r.valutazione) AS valutazione_media,
+    COUNT(r.id_recensione) AS numero_recensioni
+FROM
+    staff AS s
+JOIN
+    anagrafica AS a ON s.codice_fiscale_fk = a.codice_fiscale
+JOIN
+    appuntamenti AS app ON s.id_staff = app.id_staff_assegnato_fk
+JOIN
+    recensioni AS r ON app.id_appuntamento = r.id_appuntamento_fk
+GROUP BY
+    s.id_staff, a.nome, a.cognome, s.ruolo
+ORDER BY
+    valutazione_media DESC;
+
+
+Query Migliori Clienti 
+
+SELECT
+    c.id_cliente,
+    an.nome,
+    an.cognome,
+    an.telefono,
+    c.email,
+    SUM(sc.totale) AS spesa_totale,
+    COUNT(app.id_appuntamento) AS numero_appuntamenti
+FROM
+    clienti AS c
+JOIN
+    anagrafica AS an ON c.codice_fiscale_fk = an.codice_fiscale
+JOIN
+    appuntamenti AS app ON c.id_cliente = app.id_cliente_fk
+JOIN
+    scontrini AS sc ON app.id_appuntamento = sc.id_appuntamento_fk
+GROUP BY
+    c.id_cliente, an.nome, an.cognome, an.telefono, c.email
+ORDER BY
+    spesa_totale DESC
+LIMIT 10;
+
+
+
+Query Prodotti che stanno per terminare :
+
+SELECT
+    p.nome AS nome_prodotto,
+    c.nome AS categoria,
+    f.nome AS fornitore,
+    f.telefono AS telefono_fornitore,
+    mp.quantita
+FROM
+    magazzino_prodotti AS mp
+JOIN
+    prodotti AS p ON mp.id_prodotto_fk = p.id_prodotto
+JOIN
+    categorie AS c ON p.nome_categoria_fk = c.nome
+JOIN
+    fornitori AS f ON p.id_fornitore_fk = f.id_fornitore
+WHERE
+    mp.quantita < 20 -- Soglia di riordino
+ORDER BY
+    mp.quantita ASC;

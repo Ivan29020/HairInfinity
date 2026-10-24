@@ -1,0 +1,109 @@
+
+.no-scroll-navbar main {
+    padding-top: 10px !important;
+}
+
+/* Generale */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fafc;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 250px; /* Altezza fissa iniziale */
+    transition: all 0.3s ease-in-out; /* Animazione fluida */
+    position: relative;
+    cursor: pointer;
+}
+
+/* Modifica la card per espanderla */
+.card.expanded {
+    height: 100%; /* Altezza dinamica */
+    z-index: 5; /* Porta la card sopra le altre */
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Espansione del testo nella card espansa */
+.card.expanded .card-body {
+    overflow: visible;
+}
+
+/* Testo nascosto (limitato nell'altezza fissa) */
+.card .card-body {
+    overflow: hidden;
+}
+
+.card img {
+    border-radius: 10px 0 0 10px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1rem;
+    background-color: #fdfdfd;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+.card-text {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.center-text {
+    text-align: center;
+}
+
+/* Container interno */
+.container2 {
+    width: 90%; /* Rendi il contenitore più grande */
+    max-width: 2000px; /* Imposta un limite massimo per evitare che diventi troppo largo */
+    margin: 0 auto; /* Mantieni il contenitore centrato */
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Spaziature */
+.py-4 {
+    padding: 2rem 0;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+/* Effetto hover */
+.card:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        height: auto; /* Rimuove altezza fissa per display piccoli */
+    }
+    .card img {
+        border-radius: 10px 10px 0 0;
+        height: auto;
+    }
+}

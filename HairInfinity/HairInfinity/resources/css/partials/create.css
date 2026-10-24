@@ -1,0 +1,243 @@
+/*!* CONTENITORE PRINCIPALE *!*/
+/*.container_create {*/
+/*    max-height: 530px; !* Limita l'altezza massima del contenitore *!*/
+/*    overflow-y: auto; !* Abilita lo scrolling verticale *!*/
+/*    margin: 10px 30px;*/
+/*    padding: 20px;*/
+/*    background-color: #ffffff; !* Sfondo bianco per contrasto *!*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); !* Leggera ombra *!*/
+/*    border-radius: 10px; !* Bordi arrotondati *!*/
+/*    max-width: 95%;*/
+/*    overflow-x: auto; !* Scroll orizzontale se necessario *!*/
+/*    border: 1px solid #ddd; !* Bordo esterno della tabella *!*/
+/*}*/
+
+/*!* Titolo della pagina *!*/
+/*.container_create h1 {*/
+/*    font-size: 24px;*/
+/*    color: #202A67;*/
+/*    margin-bottom: 20px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*!* STILE DEL FORM *!*/
+/*form {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 15px;*/
+/*}*/
+
+/*!* STILE DEI GRUPPI DI INPUT *!*/
+/*.form-group {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 5px;*/
+/*    align-items: flex-start;*/
+/*}*/
+
+/*.form-group label {*/
+/*    font-weight: bold;*/
+/*    color: #202A67;*/
+/*}*/
+
+/*.form-group input,*/
+/*.form-group select {*/
+/*    padding: 10px;*/
+/*    border: 1px solid #ddd;*/
+/*    border-radius: 5px;*/
+/*    font-size: 1rem;*/
+/*    width: 100%; !* Occupa tutta la larghezza disponibile *!*/
+/*    transition: border-color 0.3s ease;*/
+/*}*/
+
+/*.form-group input:focus,*/
+/*.form-group select:focus {*/
+/*    border-color: #3a7bd5;*/
+/*    outline: none;*/
+/*}*/
+
+/*!* STILE DEL BOTTONE DI AGGIUNTA TELEFONO *!*/
+/*.add-phone {*/
+/*    padding: 8px 16px;*/
+/*    background-color: #3a7bd5;*/
+/*    color: #fff;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 0.9rem;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*.add-phone:hover {*/
+/*    background-color: #002aff;*/
+/*}*/
+
+/*!* STILE DEI CAMPI DI INPUT PER I TELEFONI *!*/
+/*.phone-input {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 10px;*/
+/*    width: 100%;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*.phone-input input {*/
+/*    flex: 1; !* Occupa tutto lo spazio disponibile *!*/
+/*}*/
+
+/*.phone-input .remove-phone {*/
+/*    padding: 8px 12px;*/
+/*    background-color: #ff4d4d;*/
+/*    color: #fff;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 0.9rem;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+
+/*!*.phone-input .remove-phone:hover {*!*/
+/*    background-color: #cc0000;*/
+/*}*/
+
+/*!* STILE DEL BOTTONE DI INVIO *!*/
+/*!* Stile del pulsante "btn_aggiorna" *!*/
+/*.btn_aggiungi {*/
+/*    padding: 12px 20px; !* Spaziatura interna *!*/
+/*    background-color: #3a7bd5; !* Colore di sfondo *!*/
+/*    color: #ffffff; !* Colore del testo *!*/
+/*    border: none; !* Rimuove i bordi *!*/
+/*    border-radius: 6px; !* Arrotondamento degli angoli *!*/
+/*    font-size: 1rem; !* Dimensione del testo *!*/
+/*    font-weight: bold; !* Testo in grassetto *!*/
+/*    cursor: pointer; !* Cambia il cursore al passaggio del mouse *!*/
+/*    transition: all 0.3s ease-in-out; !* Animazione fluida *!*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); !* Leggera ombra *!*/
+/*    text-transform: uppercase; !* Testo maiuscolo *!*/
+/*}*/
+
+/*!* Stile al passaggio del mouse *!*/
+/*.btn_aggiungi:hover {*/
+/*    background-color: #002aff; !* Colore più scuro *!*/
+/*    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); !* Ombra più pronunciata *!*/
+/*    transform: translateY(-2px); !* Sollevamento leggero *!*/
+/*}*/
+
+/*!* Stile al focus *!*/
+/*.btn_aggiungi:focus {*/
+/*    outline: 2px solid #3a7bd5; !* Contorno visibile blu *!*/
+/*    outline-offset: 2px; !* Spaziatura tra outline e pulsante *!*/
+/*}*/
+
+/*!* Stile al click (attivo) *!*/
+/*.btn_aggiungi:active {*/
+/*    background-color: #001a80; !* Colore più scuro *!*/
+/*    transform: translateY(0); !* Nessun sollevamento *!*/
+/*}*/
+
+/*!* STILE DEGLI ALERT DI ERRORE *!*/
+/*.alert.alert-danger {*/
+/*    background-color: #f8d7da;*/
+/*    color: #721c24;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid #f5c6cb;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.alert.alert-danger ul {*/
+/*    list-style-type: none;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.alert.alert-danger ul li {*/
+/*    margin: 5px 0;*/
+/*}*/
+
+/*.back-button-container {*/
+/*    margin: 5px 0 20px 5px;*/
+/*}*/
+
+/*!* Stile del pulsante "btn-secondary" *!*/
+/*.btn-secondary {*/
+/*    display: flex; !* Converte il contenuto del pulsante in un contenitore flex *!*/
+/*    align-items: center; !* Allinea verticalmente al centro *!*/
+/*    justify-content: center; !* Allinea orizzontalmente al centro *!*/
+/*    padding: 12px; !* Spaziatura interna *!*/
+/*    background-color: #3a7bd5; !* Colore di sfondo *!*/
+/*    color: #ffffff; !* Colore del testo e dell'icona *!*/
+/*    border: none; !* Rimuove i bordi *!*/
+/*    border-radius: 6px; !* Bordi leggermente arrotondati *!*/
+/*    font-size: 1rem; !* Dimensione del font *!*/
+/*    font-weight: bold; !* Testo in grassetto *!*/
+/*    cursor: pointer; !* Cambia il cursore al passaggio del mouse *!*/
+/*    transition: all 0.3s ease-in-out; !* Animazione fluida *!*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); !* Ombra leggera *!*/
+/*    text-transform: uppercase; !* Testo in maiuscolo *!*/
+/*    text-decoration: none; !* Rimuove eventuali sottolineature *!*/
+/*    width: 50px; !* Puoi adattare la larghezza per pulsanti quadrati *!*/
+/*    height: 50px; !* Puoi adattare l'altezza per pulsanti quadrati *!*/
+/*}*/
+
+/*!* Stile su hover per btn-secondary *!*/
+/*.btn-secondary:hover {*/
+/*    background-color: #002aff; !* Colore più scuro su hover *!*/
+/*    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); !* Ombra più pronunciata *!*/
+/*    transform: translateY(-2px); !* Leggero sollevamento *!*/
+/*}*/
+
+/*!* Stile su focus *!*/
+/*.btn-secondary:focus {*/
+/*    outline: 2px solid #3a7bd5; !* Bordo visibile blu in focus *!*/
+/*    outline-offset: 1px; !* Spaziatura tra il bordo e il pulsante *!*/
+/*}*/
+
+/*!* Stile su click (active) *!*/
+/*.btn-secondary:active {*/
+/*    background-color: #001a80; !* Sfondo più scuro al click *!*/
+/*    transform: translateY(0); !* Disabilita il sollevamento per simulare il click *!*/
+/*}*/
+
+/*!* Media Query per schermi piccoli *!*/
+/*@media (max-width: 768px) {*/
+/*    .btn-secondary {*/
+/*        width: 100%; !* Larghezza piena su schermi piccoli *!*/
+/*        text-align: center; !* Testo centrato *!*/
+/*    }*/
+/*}*/
+
+/*!* Stile del pulsante "btn_aggiorna" *!*/
+/*.btn_aggiorna {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    padding: 12px 20px;*/
+/*    background-color: #3a7bd5;*/
+/*    color: #ffffff;*/
+/*    border: none;*/
+/*    border-radius: 6px;*/
+/*    font-size: 1rem;*/
+/*    font-weight: bold;*/
+/*    cursor: pointer;*/
+/*    transition: all 0.3s ease-in-out;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*    text-transform: none;*/
+/*}*/
+
+/*.btn_aggiorna:hover {*/
+/*    background-color: #002aff;*/
+/*    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);*/
+/*    transform: translateY(-2px);*/
+/*}*/
+
+/*.btn_aggiorna:focus {*/
+/*    outline: 2px solid #3a7bd5;*/
+/*    outline-offset: 1px;*/
+/*}*/
+
+/*.btn_aggiorna:active {*/
+/*    background-color: #001a80;*/
+/*    transform: translateY(0);*/
+/*}*/
